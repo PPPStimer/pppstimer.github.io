@@ -1,0 +1,123 @@
+---
+layout: default
+---
+<nav class="tabs" role="tablist">
+  {% for s in site.data.softs %}
+  <button class="tab tab--{{ s.color }}{% if forloop.first %} is-active{% endif %}" role="tab"
+          data-tab="{{ s.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ s.name }}</button>
+  {% endfor %}
+</nav>
+
+{% assign d = site.data.donate %}
+{% assign pct = d.goal.raised | times: 100 | divided_by: d.goal.target %}{% if pct > 100 %}{% assign pct = 100 %}{% endif %}
+
+{% for s in site.data.softs %}
+<div class="panel panel--{{ s.color }}" id="{{ s.id }}" role="tabpanel" data-repo="{{ s.repo }}" data-asset="{{ s.asset }}"{% unless forloop.first %} hidden{% endunless %}>
+  <div class="panel__bar"></div>
+  <main class="panel__body">
+    <section class="info">
+      <div class="head">
+        {% if s.icon != "" %}<img class="icon" src="{{ s.icon | relative_url }}" alt="{{ s.name }} icon">
+        {% else %}<div class="icon icon--empty">icon</div>{% endif %}
+        <div class="meta"><span data-gh="version">{{ s.version }}</span> · Python · <span data-gh="size">{{ s.size }}</span><span data-gh="downloads" hidden></span></div>
+      </div>
+      <h1>{{ s.title }}</h1>
+      <p>{{ s.desc }}</p>
+      <ul class="features">
+        {% for f in s.features %}<li>{{ f }}</li>{% endfor %}
+      </ul>
+      <div class="actions">
+        <a class="btn" data-gh="href" href="{{ s.download }}">Download {{ s.name }}</a>
+        <span class="meta" data-gh="file">{{ s.file }}</span>
+      </div>
+
+      {% if s.requirements %}
+      {% capture pip %}pip install{% for r in s.requirements %} {% if r contains '>' or r contains '<' %}"{{ r }}"{% else %}{{ r }}{% endif %}{% endfor %}{% endcapture %}
+      <div class="reqs">
+        <div class="reqs__head"><span>Requirements</span><span class="meta">{{ s.python }}</span></div>
+        <div class="reqs__list">{% for r in s.requirements %}<span>{{ r }}</span>{% endfor %}</div>
+        <div class="cmd">
+          <code><span class="cmd__p">$</span> {{ pip | strip }}</code>
+          <button class="copy" data-copy="{{ pip | strip | escape }}">Copy</button>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if s.changelog %}
+      <details class="acc">
+        <summary>Changelog</summary>
+        <div class="changelog__list" data-gh="changelog">
+          {% for r in s.changelog %}
+          <div class="release">
+            <span class="release__v">{{ r.version }}</span>
+            <span class="meta">{{ r.date }}</span>
+            <ul>{% for c in r.changes %}<li>{{ c }}</li>{% endfor %}</ul>
+          </div>
+          {% endfor %}
+        </div>
+      </details>
+      {% endif %}
+
+      {% if s.faq %}
+      <div class="faq">
+        <h2>FAQ</h2>
+        {% for q in s.faq %}
+        <details class="acc acc--q" name="faq-{{ s.id }}">
+          <summary>{{ q.q }}</summary>
+          <p>{{ q.a }}</p>
+        </details>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </section>
+
+    <div class="side">
+      <div class="carousel" data-autoplay="4000">
+        <div class="carousel__track">
+          {% if s.screenshots.size > 0 %}
+            {% for img in s.screenshots %}<img class="carousel__slide" src="{{ img | relative_url }}" alt="{{ s.name }} screenshot {{ forloop.index }}">{% endfor %}
+          {% else %}
+            {% for n in (1..3) %}<div class="carousel__slide carousel__slide--empty">screenshot {{ n }} · {{ s.name }}</div>{% endfor %}
+          {% endif %}
+        </div>
+        <button class="carousel__btn carousel__btn--prev" aria-label="Previous">&lsaquo;</button>
+        <button class="carousel__btn carousel__btn--next" aria-label="Next">&rsaquo;</button>
+        <div class="carousel__dots"></div>
+      </div>
+
+      <section class="donate">
+        <div class="donate__head">
+          <h2>{{ d.title }}</h2>
+          <span class="meta">{{ d.goal.currency }}{{ d.goal.raised }} of {{ d.goal.currency }}{{ d.goal.target }}</span>
+        </div>
+        <div class="donate__bar"><div style="width:{{ pct }}%"></div></div>
+        <div class="donate__sub meta"><span>{{ pct }}% funded</span><span>{{ d.goal.note }}</span></div>
+        <div class="donate__platforms">
+          {% for p in d.platforms %}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a>{% endfor %}
+        </div>
+        <div class="donate__wallets">
+          {% for w in d.wallets %}
+          <div class="wallet">
+            <span class="wallet__name">{{ w.name }}</span>
+            <span class="wallet__addr">{{ w.address }}</span>
+            <button class="copy" data-copy="{{ w.address }}">Copy</button>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+{% endfor %}
+
+<footer class="foot">
+  <span>© {{ 'now' | date: '%Y' }} · {{ site.license }}</span>
+  <div class="foot__links">
+    {% for l in site.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.name }}</a>{% endfor %}
+  </div>
+  <div class="theme" role="radiogroup" aria-label="Theme">
+    <button data-theme-set="auto">Auto</button>
+    <button data-theme-set="light">Light</button>
+    <button data-theme-set="dark">Dark</button>
+  </div>
+</footer>

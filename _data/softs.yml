@@ -1,0 +1,80 @@
+- id: soft1
+  name: soft1
+  color: orange
+  icon: ""          # e.g. /assets/img/soft1-icon.png
+  title: "Soft1 — a short program tagline"
+  # GitHub repo "owner/name": version, size, download link, downloads and changelog
+  # are loaded live from its Releases. Values below are the fallback.
+  repo: USER/soft1
+  asset: ".zip"     # optional: part of the release file name to pick (e.g. ".zip", "win")
+  version: v1.0.0
+  size: 12 MB
+  desc: "Description of the first program: what it does, who it is for, and why it is useful."
+  features:
+    - First key feature
+    - Second key feature
+    - Third key feature
+  file: soft1-v1.0.0.zip
+  download: "https://github.com/USER/soft1/releases/latest"
+  python: "Python 3.10+"
+  requirements:
+    - requests==2.32.3
+    - PyQt6==6.7.1
+    - numpy>=1.26
+  changelog:
+    - version: v1.0.0
+      date: 2026-10-01
+      changes:
+        - Initial release
+    - version: v0.9.0
+      date: 2026-09-12
+      changes:
+        - Public beta
+        - Bug fixes
+  faq:
+    - q: How do I install it?
+      a: Install Python, run the pip command above to get all dependencies, then download and run the program.
+    - q: My antivirus flags the file. Is it safe?
+      a: Unsigned Python builds are sometimes flagged as a false positive. The source code is open on GitHub — you can check it or run from source.
+    - q: How do I update to a new version?
+      a: Download the latest release and replace the old files. Run the pip command again in case dependencies changed.
+  # screenshots: list of image paths, e.g. /assets/img/soft1-1.png
+  screenshots: []
+
+- id: soft2
+  name: soft2
+  color: blue
+  icon: ""
+  title: "Soft2 — a short program tagline"
+  repo: USER/soft2
+  asset: ".zip"
+  version: v1.0.0
+  size: 8 MB
+  desc: "Description of the second program: what it does, who it is for, and why it is useful."
+  features:
+    - First key feature
+    - Second key feature
+    - Third key feature
+  file: soft2-v1.0.0.zip
+  download: "https://github.com/USER/soft2/releases/latest"
+  python: "Python 3.9+"
+  requirements:
+    - pillow==10.4.0
+    - click==8.1.7
+    - rich==13.8.1
+  changelog:
+    - version: v1.0.0
+      date: 2026-10-01
+      changes:
+        - Initial release
+    - version: v0.9.0
+      date: 2026-09-12
+      changes:
+        - Public beta
+        - Bug fixes
+  faq:
+    - q: How do I install it?
+      a: Install Python, run the pip command above to get all dependencies, then download and run the program.
+    - q: How do I update to a new version?
+      a: Download the latest release and replace the old files. Run the pip command again in case dependencies changed.
+  screenshots: []

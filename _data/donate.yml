@@ -1,0 +1,22 @@
+title: Support development
+goal:
+  raised: 0
+  target: 1000
+  currency: "$"
+  note: Monthly goal
+platforms:
+  - name: Ko-fi
+    url: https://ko-fi.com/
+  - name: Patreon
+    url: https://patreon.com/
+  - name: GitHub Sponsors
+    url: https://github.com/sponsors/
+  - name: PayPal
+    url: https://paypal.me/
+wallets:
+  - name: BTC
+    address: Test
+  - name: ETH
+    address: "0x0"
+  - name: USDT
+    address: Test
