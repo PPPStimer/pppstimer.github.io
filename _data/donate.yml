@@ -15,8 +15,8 @@ platforms:
     url: https://paypal.me/
 wallets:
   - name: BTC
-    address: Test
+    address: bc1qhvl5zp90feq9ljg5frr6t5h2atnpae5nkg0syq
   - name: ETH
-    address: "0x0"
-  - name: USDT
-    address: Test
+    address: Soon
+  - name: USDT trc20
+    address: Soon
