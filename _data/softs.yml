@@ -49,40 +49,54 @@
     - /assets/img/stimstudio-2.jpg
     - /assets/img/stimstudio-3.jpg
 
-- id: soft2
-  name: soft2
+- id: beatgen
+  name: BeatGen
   color: blue
-  icon: ""
-  title: "Soft2 — a short program tagline"
-  repo: USER/soft2
-  asset: ".zip"
+  icon: /assets/img/beatgen-icon.svg
+  title: "BeatGen — a multitrack beatmeter generator"
+  # GitHub repo "owner/name": version, size, download link, downloads and changelog
+  # are loaded live from its Releases. Values below are the fallback.
+  repo: PPPStimer/BeatGen
+  asset: ""         # no build files yet: the release's source archive is offered
   version: v1.0.0
-  size: 8 MB
-  desc: "Description of the second program: what it does, who it is for, and why it is useful."
+  size: 0.4 MB
+  desc: "Make beatmeters, the animated markers that show the rhythm of a music track. Place beats on a timeline over your audio, detected automatically or by hand, add text and countdowns and watch the result in a live preview. BeatGen exports it as a PNG frame sequence to lay over your video, with matching audio and a CSV of beat times."
   features:
-    - First key feature
-    - Second key feature
-    - Third key feature
-  file: soft2-v1.0.0.zip
-  download: "https://github.com/USER/soft2/releases/latest"
-  python: "Python 3.9+"
+    - Opens WAV, MP3, FLAC and OGG, with a zoomable waveform and playback
+    - Tempo and downbeat detection in the whole track or a selection, across the full range or just the kick, snare or hi-hat
+    - Beat tracks with their own colour, click sound and icon, holding single beats and repeating patterns
+    - Text and countdown tracks with fades, and a Visibility track that can hide the beats in pauses
+    - "Visual styles: Dot Stream, Timeline Wave, Ripple Burst, Bar Slide, Radar Sweep and Particle Burst, with static or animated SVG icons"
+    - Export a PNG sequence up to 3840×2160 at 1–120 fps, WAV with or without the beats, and beat times as CSV
+    - Undo and redo, copy and paste, a snap grid, project files and autosave
+  file: BeatGen-1.0.0.zip (source)
+  download: "https://github.com/PPPStimer/BeatGen/releases/latest"
+  python: "Python 3.12+"
   requirements:
-    - pillow==10.4.0
-    - click==8.1.7
-    - rich==13.8.1
+    - PyQt6>=6.11.0
+    - numpy>=2.4.6
+    - librosa>=0.11.0
+    - scipy>=1.18.0
+    - soundfile>=0.14.0
+    - Pillow>=12.2.0
+    - sounddevice>=0.5.5
   changelog:
     - version: v1.0.0
-      date: 2026-10-01
+      date: 2026-11-23
       changes:
-        - Initial release
-    - version: v0.9.0
-      date: 2026-09-12
-      changes:
-        - Public beta
-        - Bug fixes
+        - First release
   faq:
-    - q: How do I install it?
-      a: Install Python, run the pip command above to get all dependencies, then download and run the program.
+    - q: How do I install and start it?
+      a: "Install Python 3.12 or newer, download the release and unpack it. In the unpacked folder run pip install -r requirements.txt, then run python BeatGen.py, or on Windows double-click BeatGen.pyw. You don't need ffmpeg, MP3 included."
+    - q: How do I put the beatmeter over my video?
+      a: "Export Beatmeter Images gives a PNG sequence. For frames you can overlay, set the background's alpha to 0 in Beat Style. Import the frames into your video editor as an image sequence at the same frame rate, place them over the video and add the exported audio."
+    - q: Does it connect to the internet?
+      a: "Only to download the donation window's content from this site at launch. It uploads nothing about you or your projects, and works normally without internet access."
+    - q: Does it run on Linux or macOS?
+      a: "It is developed on Windows. The automated tests also pass on Linux, but the app itself hasn't been tried on a Linux desktop yet, and macOS is untested. On Linux, sounddevice also needs PortAudio (libportaudio2)."
     - q: How do I update to a new version?
-      a: Download the latest release and replace the old files. Run the pip command again in case dependencies changed.
-  screenshots: []
+      a: "Download the latest release and replace the old files, then run the pip command again in case dependencies changed. Your projects and settings are kept."
+  screenshots:
+    - /assets/img/beatgen-1.jpg
+    - /assets/img/beatgen-2.jpg
+    - /assets/img/beatgen-3.jpg
