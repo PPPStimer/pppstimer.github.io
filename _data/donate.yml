@@ -14,9 +14,13 @@ platforms:
   - name: PayPal
     url: https://paypal.me/
 wallets:
-  - name: BTC
-    address: bc1qhvl5zp90feq9ljg5frr6t5h2atnpae5nkg0syq
+  - name: BTC taproot
+    address: bc1paaf98gf374rs0g7r0wyyyx2ma0g7z4petqayawlzv22w3pnufhcq4zg55k
   - name: ETH
-    address: Soon
-  - name: USDT trc20
-    address: Soon
+    address: 0x5D2d206bEA0622E2DB289cf6846830C68F489269
+  - name: TRX
+    address: TZ66oPuxupddGwUHZ7P9LLko35dQrjHRfP
+  - name: DOGE
+    address: DDLqWfGuCMRj2jyhudfT9dKCku6W9V4s8M
+  - name: LTC
+    address: LUcbYB6UCtjUG7t7RH1Ku5kxbRNrqYMf7M
